@@ -1,0 +1,10 @@
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+.env*
+
+# Source Word doc — contains the personal name in its XML, kept local only
+DATOS.md.docx

@@ -1,0 +1,160 @@
+@import "tailwindcss";
+
+/* Tailwind v4 auto-detects sources by walking the project and honouring
+   .gitignore. This isn't a git repo, so it has nothing to exclude by and scans
+   its own build output — every class ever emitted gets rediscovered in out/ and
+   .next/ and kept alive forever, so deleted utilities never actually leave the
+   stylesheet. Exclude the two output dirs explicitly. */
+@source not "../out";
+@source not "../.next";
+
+/* Palette: warm restraint — aged brass, oxblood leather, and warm neutrals that
+   carry yellow/red rather than grey. The base is white; the warmth now comes
+   from the type and accents sitting on it, not from the ground itself. */
+@theme inline {
+  --color-paper: #ffffff; /* page base — white by request; token name kept */
+  --color-linen: #ded2bc; /* one step down; image wells, rules */
+  --color-ink: #211a14; /* warm near-black, never #000 */
+  --color-ash: #6f6250; /* muted secondary type — 4.83:1 on paper, AA at 10.88px */
+  --color-brass: #a8763e; /* aged brass — the accent */
+  --color-oxblood: #5e2429; /* oxblood leather — the deep ground */
+
+  --font-serif: var(--font-newsreader), Georgia, serif;
+  --font-sans: var(--font-work-sans), system-ui, sans-serif;
+}
+
+body {
+  cursor: default;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-linen);
+}
+
+[id] {
+  scroll-margin-top: 4rem;
+}
+
+/* Scroll-triggered fade-in, no JS. Browsers without scroll-driven animations
+   run it once on load — either way the element ends up visible, so JS-off and
+   Firefox both still read the page. */
+.reveal {
+  animation: reveal-in linear both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 32%;
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------------------------------------------------------------- finds --
+   The gallery's reveal, driven by the IntersectionObserver in Finds.tsx, not
+   by a view timeline: the run is asymmetric, so a tile needs to know it is on
+   screen (and that it has left again) rather than be scrubbed by its own
+   position. Adapted from Hebras's #coleccion blocks.
+
+   transform and opacity only, so it stays on the compositor. `.find-photo` is
+   inside the observed <figure> and is the only thing that moves — transform
+   the observed element and its intersection rect walks off with it, and a tile
+   that can't report itself back in never returns.
+
+   Knobs: the two durations, the 520ms beat before the caption, --stagger per
+   tile (Finds.tsx), and the observer threshold for how late it all starts. */
+/* The paired detail tiles travel sideways, and below lg they sit flush against
+   the container padding — so their off state hangs 28px past the viewport and
+   the page grows a horizontal scrollbar (measured: scrollWidth 418 at a 414
+   viewport). `clip`, not `hidden`: it does not create a scroll container, so
+   the view() timelines inside still resolve against the document, and with
+   overflow-y left `visible` the vertical drift is untouched. Clipping is the
+   intent anyway — "off to the right" should be off. */
+#finds {
+  overflow-x: clip;
+}
+
+#finds .find-photo,
+#finds .find-cap {
+  transition:
+    opacity 1300ms ease-out,
+    transform 1300ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--stagger, 0) * 1ms);
+}
+
+/* The caption waits out most of the photo's travel, so the two read as two
+   events instead of one thing arriving in halves. */
+#finds .find-cap {
+  transition-delay: calc((var(--stagger, 0) + 520) * 1ms);
+}
+
+/* No attribute until the observer speaks, so the pre-JS render is the visible
+   one. Leaving is quick and unstaged — a staggered 1300ms exit only makes
+   scrolling back up feel gummy. */
+#finds [data-photo="n"] .find-photo {
+  opacity: 0;
+  transform: var(--from, translateY(2rem));
+  transition-duration: 420ms;
+  transition-delay: 0s;
+}
+
+#finds [data-seen="n"] .find-cap {
+  opacity: 0;
+  transform: translateY(0.75rem);
+  transition-duration: 420ms;
+  transition-delay: 0s;
+}
+
+/* Parallax. Scroll-driven, so no JS and no rAF loop of its own. --drift is half
+   the total travel, set per tile: the small detail crops move furthest, the
+   edge-to-edge spread least, which is the depth cue. No overscan needed — the
+   frame drifts inside the whitespace around it and never exposes an edge.
+
+   Inside @supports because `both` fill would otherwise park every tile at the
+   end of the keyframe on browsers with no view timelines (Firefox today), i.e.
+   permanently shifted up. Without support they simply sit still. */
+@supports (animation-timeline: view()) {
+  #finds .find-drift {
+    will-change: transform;
+    animation: find-drift linear both;
+    animation-timeline: view();
+    animation-range: cover;
+  }
+}
+
+@keyframes find-drift {
+  from {
+    transform: translateY(var(--drift, 2.5vh));
+  }
+  to {
+    transform: translateY(calc(var(--drift, 2.5vh) * -1));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    animation: none;
+  }
+  /* Finds keeps the fade in and out, drops the travel and the drift. Later in
+     the file than the rules it overrides and at the same specificity, so it
+     wins; the stagger is untouched, only the movement goes. */
+  #finds [data-photo="n"] .find-photo,
+  #finds [data-seen="n"] .find-cap {
+    transform: none;
+  }
+  #finds .find-drift {
+    animation: none;
+  }
+  * {
+    scroll-behavior: auto !important;
+  }
+}
