@@ -11,6 +11,12 @@ import { scrollToId } from "@/components/SmoothScroll";
  * from a band underneath the type to behind it, which forces the whole section
  * to invert.
  *
+ * Four elements, no fifth: mark, wordmark, tagline, control. The standfirst
+ * paragraph that used to sit above the control is gone at Marcin's direction —
+ * the photograph is now doing the work it was doing, and the first prose a
+ * visitor reads is Story's, which says the same thing at length and in her own
+ * voice. Nothing else on the page depended on it.
+ *
  * It is not a stylistic inversion, it is a contrast one. The accent numeral is
  * #e8501f, which holds 3.75:1 on paper and needs 3:1 as large text. Veiling the
  * photo with white to keep ink type readable drags that figure *down* — at 85%
@@ -56,16 +62,11 @@ export default function Hero() {
       />
 
       <div className="mx-auto w-full max-w-[100rem] px-6 sm:px-8 lg:px-12">
-        {/* Masthead rule. Not a nav — the brief forbids one — just the two
-            standing facts, set as a running head over a hairline. */}
-        <div className="flex items-center justify-between gap-4 border-b border-paper/20 pb-4 pt-7 text-[0.68rem] uppercase tracking-[0.26em] text-paper/70">
-          {/* Was the byline name; now the discipline, since the handle already
-              carries identity below as the h1 wordmark. */}
-          <span>Relojería vintage</span>
-          <span>Madrid</span>
-        </div>
-
-        <div className="flex flex-col items-center pb-[14vh] pt-[13vh] text-center lg:pb-[16vh] lg:pt-[15vh]">
+        {/* The masthead rule that used to open this section is now the nav bar,
+            which is fixed and sits over this photograph — see Nav.tsx. The
+            padding below absorbs its 4rem, so the mark still starts clear of
+            it rather than under it. */}
+        <div className="flex flex-col items-center pb-[14vh] pt-[calc(4rem+11vh)] text-center lg:pb-[16vh] lg:pt-[calc(4rem+13vh)]">
           {/* The mark opens the page and the wordmark answers it directly
               below, on the same axis — the two halves of the lockup read as
               one gesture. White dial and hand, accent pivot: the same drawing
@@ -115,13 +116,6 @@ export default function Hero() {
               carried them either, so the two now agree. */}
           <p className="mt-7 font-serif text-[clamp(1.25rem,2.2vw,1.75rem)] italic leading-snug text-paper/80">
             Maquinitas de todo el mundo
-          </p>
-
-          <p className="mt-9 max-w-[44ch] text-[1.0625rem] leading-[1.65] text-paper/85">
-            No busco relojes de lujo. Busco maquinitas: las que aparecen en una
-            caja revuelta de mercadillo, sin estuche y sin certificado,
-            esperando a que alguien las vuelva a poner en hora. ¿Y la historia
-            que traen dentro? Esa es la parte que cuento.
           </p>
 
           {/* The only CTA on the screen, and the same inverted treatment Shop
