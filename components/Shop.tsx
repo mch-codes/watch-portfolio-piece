@@ -8,7 +8,10 @@ import { VINTED } from "@/lib/site";
  * count, and no stock claim — nothing here can go stale or turn out to be
  * false, because nothing here asserts what is currently for sale.
  *
- * THE ONE DARK BAND ON THE PAGE, and the only section that isn't on paper.
+ * The dark band that closes the page — Hero opens on one too, since the
+ * photograph moved behind the lockup, so the two of them bracket the editorial
+ * middle. This is still the only *tinted* section: Hero is dark because there
+ * is a photograph under it, this one is dark by choice.
  * Story rejected a tinted band for itself and the reasoning holds — but it
  * rejected *linen*, where the site's micro-label token (ash) drops to 3.97:1
  * and fails AA. Oxblood is the other direction: paper on #5e2429 is 11.93:1,
@@ -31,7 +34,7 @@ export default function Shop() {
             <p className="text-[0.68rem] uppercase tracking-[0.26em] text-paper/70">
               En venta
             </p>
-            <h2 className="mt-6 font-serif text-[clamp(1.75rem,4.4vw,3.75rem)] font-normal leading-[1.05] tracking-[-0.02em]">
+            <h2 className="mt-6 font-serif text-[clamp(1.75rem,4.4vw,3.75rem)] font-medium leading-[1.05] tracking-[-0.02em]">
               Algunas se quedan.{" "}
               <span className="block italic">Otras siguen camino.</span>
             </h2>
@@ -50,9 +53,9 @@ export default function Shop() {
             </p>
 
             {/* Hero's CTA, inverted. The rule is full-strength paper rather
-                than brass — brass on oxblood is 3.03:1, which clears WCAG
-                1.4.11 by three hundredths and is not a margin worth shipping on
-                the page's only commercial control. Hover presses the nib from
+                than the accent — the accent on oxblood is 3.18:1, which clears
+                WCAG 1.4.11 by eighteen hundredths and is not a margin worth
+                shipping on the only commercial control. Hover presses the nib from
                 1px to 2px with -mb-px cancelling the growth, so the baseline
                 never moves; the colour stays put because there is nothing
                 lighter than paper to move it to. */}

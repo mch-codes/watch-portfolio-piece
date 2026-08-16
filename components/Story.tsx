@@ -29,7 +29,7 @@
  * Palette stays on `paper`. A tinted band (linen) was measured and rejected:
  * the page's single micro-label token is `text-ash`, and ash on linen is
  * 3.97:1 — the eyebrow and the signature would fail AA at 10.88px. On paper
- * they hold 4.83:1. Magazines change gear by changing the type block, not by
+ * they hold 5.93:1. Magazines change gear by changing the type block, not by
  * tinting the sheet.
  */
 export default function Story() {
@@ -52,9 +52,9 @@ export default function Story() {
                 cap than Finds (3.75rem vs 4.5rem) because that one is a single
                 display word and this one is a sentence: at 4.5rem it would run
                 to three lines and stop being a headline. Second clause in
-                Newsreader's real italic, which is the whole reason the face is
+                Cormorant's real italic, which is the whole reason the face is
                 on this page. */}
-            <h2 className="mt-6 font-serif text-[clamp(1.75rem,4.4vw,3.75rem)] font-normal leading-[1.05] tracking-[-0.02em] text-ink">
+            <h2 className="mt-6 font-serif text-[clamp(1.75rem,4.4vw,3.75rem)] font-medium leading-[1.05] tracking-[-0.02em] text-ink">
               Vengo del arte.{" "}
               <span className="block italic">Y de las maquinitas.</span>
             </h2>
@@ -123,10 +123,10 @@ export default function Story() {
           </div>
 
           {/* Pull quote. Serif italic, roughly double the body size, set on a
-              short brass rule — brass is #a8763e on paper at 3.21:1, which
+              short accent rule — the accent is #e8501f on paper at 3.75:1, which
               clears WCAG 1.4.11's 3:1 for a non-text boundary. It is the
               section's only coloured mark — deliberately the only one, because
-              3.21:1 is a pass for a rule and a fail for any 18px word, so the
+              3.75:1 is a pass for a rule and a fail for any 18px word, so the
               accent lives where it carries no text and nowhere else.
 
               Columns 1-7: the same track the h2 occupies, so the quote is
@@ -184,13 +184,13 @@ export default function Story() {
             </p>
             <p className="mt-8">
               En redes o en revista, todo sale bajo la misma firma:{" "}
-              {/* The wordmark set in ink, not with the hero's brass "1". That
-                  glyph is #a8763e on paper at 3.21:1 — which clears AA in the
+              {/* The wordmark set in ink, not with the hero's accent "1". That
+                  glyph is #e8501f on paper at 3.75:1 — which clears AA in the
                   hero because the h1 is 88px (large text, 3:1) and fails it
                   here at 18px (body text, 4.5:1). Recolouring just this "1" to
-                  oxblood would pass at 9.71:1 and give the same wordmark two
+                  oxblood would pass at 11.93:1 and give the same wordmark two
                   different accent colours on one page, so the accent drops out
-                  instead: the brass rule over the pull quote is already this
+                  instead: the accent rule over the pull quote is already this
                   section's one coloured mark, and it carries no text.
                   `whitespace-nowrap` keeps the handle off a line break. */}
               <span className="whitespace-nowrap">almenos1minuto</span>.

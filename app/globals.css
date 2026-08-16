@@ -8,18 +8,24 @@
 @source not "../out";
 @source not "../.next";
 
-/* Palette: warm restraint — aged brass, oxblood leather, and warm neutrals that
-   carry yellow/red rather than grey. The base is white; the warmth now comes
-   from the type and accents sitting on it, not from the ground itself. */
+/* Palette: warm restraint — molten orange, oxblood leather, and warm neutrals
+   that carry yellow/red rather than grey. The base is white; the warmth comes
+   from the type and accents sitting on it, not from the ground itself.
+
+   The accent is molten orange, not the aged brass this started with. Contrast
+   was re-measured, not assumed: #e8501f on white is 3.75:1, which clears WCAG
+   1.4.11's 3:1 for the CTA rule, the Story rule and the Press underline, and
+   clears 1.4.3 large-text for the wordmark numeral at 36px+. It is never used
+   for body copy, where 3.75:1 would fail 4.5:1. */
 @theme inline {
-  --color-paper: #ffffff; /* page base — white by request; token name kept */
+  --color-paper: #ffffff; /* page base — white */
   --color-linen: #ded2bc; /* one step down; image wells, rules */
   --color-ink: #211a14; /* warm near-black, never #000 */
-  --color-ash: #6f6250; /* muted secondary type — 4.83:1 on paper, AA at 10.88px */
-  --color-brass: #a8763e; /* aged brass — the accent */
+  --color-ash: #6f6250; /* muted secondary type — 5.93:1 on paper, AA at 10.88px */
+  --color-brass: #e8501f; /* molten orange — the accent; token name kept */
   --color-oxblood: #5e2429; /* oxblood leather — the deep ground */
 
-  --font-serif: var(--font-newsreader), Georgia, serif;
+  --font-serif: var(--font-cormorant), Georgia, serif;
   --font-sans: var(--font-work-sans), system-ui, sans-serif;
 }
 

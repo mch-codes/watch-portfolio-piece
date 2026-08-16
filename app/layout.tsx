@@ -1,18 +1,23 @@
 import type { Metadata } from "next";
-import { Newsreader, Work_Sans } from "next/font/google";
+import { Cormorant, Work_Sans } from "next/font/google";
 import SmoothScroll from "@/components/SmoothScroll";
 import "./globals.css";
 
-// Newsreader over the Fraunces used on Hebras: it is a newsprint face, not a
-// fashion one — slightly coarse, high-contrast, and warmer at display sizes,
-// which is the register this brand wants. Variable with the opsz axis
-// requested, so the wordmark at 8rem is a different drawing from a 1rem
-// standfirst; real italics ship too, and the pull quotes lean on them.
-const newsreader = Newsreader({
+// Cormorant, at Marcin's direction, replacing Newsreader. It is a Garamond
+// revival drawn for display: very high stroke contrast, small x-height, long
+// extenders. That is a different animal from the newsprint face it replaces —
+// it gets more elegant as it gets bigger and thinner as it gets smaller, so the
+// wordmark gains and the 17px body copy would lose. Body stays on Work Sans,
+// which it already was; Cormorant is only ever set at 20px and up here.
+//
+// No opsz axis to request — Cormorant's variable font carries weight only, so
+// the size compensation Newsreader did automatically is done by hand instead:
+// display sizes take 500/600 rather than 400, which is what keeps the hairlines
+// from disappearing at 8rem. Real italics ship, and the pull quotes lean on them.
+const cormorant = Cormorant({
   subsets: ["latin"],
   style: ["normal", "italic"],
-  axes: ["opsz"],
-  variable: "--font-newsreader",
+  variable: "--font-cormorant",
 });
 
 const workSans = Work_Sans({
@@ -34,7 +39,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title,
   description,
-  // icon.png, apple-icon.png and opengraph-image.png sit next to this file and
+  // icon.svg, apple-icon.png and opengraph-image.png sit next to this file and
   // are picked up by convention — Next emits the <link> and <meta> tags and
   // appends the content hash, so no manual wiring here. The card image is a
   // static render of the wordmark rather than a photograph: the gallery shots
@@ -58,7 +63,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`scroll-smooth ${newsreader.variable} ${workSans.variable}`}
+      className={`scroll-smooth ${cormorant.variable} ${workSans.variable}`}
     >
       <body>
         <SmoothScroll />

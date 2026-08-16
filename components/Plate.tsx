@@ -55,7 +55,7 @@ export default function Plate({
             className="absolute inset-4 border border-dashed border-ink/15"
           />
           {/* Same micro-label token as the hero masthead and the finds status
-              line — 10.88px at 4.83:1. It reads as decorative chrome that will
+              line — 10.88px at 5.93:1. It reads as decorative chrome that will
               vanish when the photos land, but until they do it is the only text
               in the box, and it is what a client is reading in a pitch. */}
           <span className="relative text-[0.68rem] uppercase tracking-[0.26em] text-ash">

@@ -217,7 +217,7 @@ export default function Finds() {
           <p className="text-[0.68rem] uppercase tracking-[0.26em] text-ash">
             Selección
           </p>
-          <h2 className="mt-6 font-serif text-[clamp(2rem,5vw,4.5rem)] font-normal leading-[0.95] tracking-[-0.02em] text-ink">
+          <h2 className="mt-6 font-serif text-[clamp(2rem,5vw,4.5rem)] font-medium leading-[0.95] tracking-[-0.02em] text-ink">
             Hallazgos
           </h2>
           <p className="mt-8 max-w-[44ch] text-[1.0625rem] leading-[1.65] text-ink/80">

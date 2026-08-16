@@ -32,7 +32,7 @@ export default function Press() {
               single display word Finds gets. The claim is sourced twice over:
               both outlets are watch-culture magazines, which is also how her
               own bio describes where she publishes. */}
-          <h2 className="mt-6 font-serif text-[clamp(1.75rem,4.4vw,3.75rem)] font-normal leading-[1.05] tracking-[-0.02em] text-ink">
+          <h2 className="mt-6 font-serif text-[clamp(1.75rem,4.4vw,3.75rem)] font-medium leading-[1.05] tracking-[-0.02em] text-ink">
             Dos revistas de{" "}
             <span className="block italic">cultura relojera.</span>
           </h2>

@@ -35,7 +35,7 @@ export default function Follow() {
           <p className="text-[0.68rem] uppercase tracking-[0.26em] text-ash">
             Sígueme
           </p>
-          <h2 className="mt-6 font-serif text-[clamp(1.75rem,4.4vw,3.75rem)] font-normal leading-[1.05] tracking-[-0.02em] text-ink">
+          <h2 className="mt-6 font-serif text-[clamp(1.75rem,4.4vw,3.75rem)] font-medium leading-[1.05] tracking-[-0.02em] text-ink">
             Historias, hallazgos{" "}
             <span className="block italic">y comparativas.</span>
           </h2>
@@ -56,7 +56,7 @@ export default function Follow() {
                 rel="noreferrer"
                 className="group flex items-baseline justify-between gap-6 border-t border-ink/15 py-7 transition-colors hover:border-oxblood hover:text-oxblood focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-oxblood lg:py-9"
               >
-                <span className="font-serif text-[clamp(1.75rem,3.6vw,3rem)] leading-none tracking-[-0.02em] text-ink transition-colors group-hover:text-oxblood">
+                <span className="font-serif text-[clamp(1.75rem,3.6vw,3rem)] font-medium leading-none tracking-[-0.02em] text-ink transition-colors group-hover:text-oxblood">
                   {channel.name}
                 </span>
                 {/* The handle is the same on all three, so it is set once per
