@@ -77,29 +77,31 @@ export default function Hero() {
               off the accent token in the one place it can't be mistaken for
               decoration.
 
-              The clamp is measured, not guessed, and it was re-measured when
-              the face changed. Newsreader set this string at 7.19em; Cormorant
-              sets it at 5.91em (measured off the render at 1440: 644px of type
-              at a 109px size). Carrying the old 7.6vw over dropped the wordmark
-              from 58% of the container to 48% — a smaller logo by accident, not
-              by choice. 9.6vw puts it back at ~61%, which is the proportion the
-              reference lockup holds.
+              Josefin Sans, not the page serif — the wordmark is the one place
+              the site speaks in a different voice, so it is a mark rather than
+              a big headline. font-extralight is a real 200 here: Josefin's
+              variable font carries a wght axis of 100–700, where Cormorant
+              stopped at 300 and clamped the request.
 
-              The cap moves with it: 10rem rather than 8rem, still landing where
-              max-w-[100rem] stops the container, so above 1600px the type
-              freezing is the layout being consistent, not the type giving up.
+              The clamp is measured, not guessed, and re-measured on every face
+              change. Newsreader set this string at 7.19em, Cormorant at 5.91em,
+              Josefin at 6.26em — so 9.6vw lands at ~64% of the container here
+              against Cormorant's 61%, close enough to leave alone. The 10rem
+              cap still falls where max-w-[100rem] stops the container, so above
+              1600px the type freezing is the layout being consistent.
 
-              font-light — 300, thin by request. 200 is not available: the
-              Cormorant variable font ships a wght axis of 300–700, so a 200
-              would be clamped back to 300 by the browser and only look like it
-              was honoured. 300 is the real floor.
+              Tracking eases from -0.03em to -0.01em: the serif needed pulling
+              together, a geometric sans set this light does not, and the tight
+              value was closing the counters.
 
-              This is the one heading that goes light. The rest of the page
-              holds 500, because at 28–72px on white the hairlines get spindly;
-              here the type is 154px at the cap, which is where a Garamond this
-              high-contrast wants to be thin. */}
-          <h1 className="mt-9 font-serif text-[clamp(2.5rem,9.6vw,10rem)] font-light leading-[0.9] tracking-[-0.03em] text-paper">
-            almenos<span className="text-brass">1</span>minuto
+              The numeral carries 0.05em of air on each side. Josefin draws "1"
+              as a near-bare stem with a short flag, which at 200 collides with
+              the "s" and "m" either side and reads as a bracket — the one glyph
+              on the page that must be unmistakable. The space is on the span,
+              not the tracking, so only the numeral moves. */}
+          <h1 className="mt-9 font-display text-[clamp(2.5rem,9.6vw,10rem)] font-extralight leading-[0.9] tracking-[-0.01em] text-paper">
+            almenos<span className="mx-[0.05em] inline-block text-brass">1</span>
+            minuto
           </h1>
 
           {/* Her own YouTube line, in Cormorant's real italic — a true cursive

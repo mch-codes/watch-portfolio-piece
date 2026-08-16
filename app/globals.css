@@ -26,6 +26,7 @@
   --color-oxblood: #5e2429; /* oxblood leather — the deep ground */
 
   --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-display: var(--font-josefin), var(--font-work-sans), sans-serif;
   --font-sans: var(--font-work-sans), system-ui, sans-serif;
 }
 

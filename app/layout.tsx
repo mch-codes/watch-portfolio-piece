@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant, Work_Sans } from "next/font/google";
+import { Cormorant, Josefin_Sans, Work_Sans } from "next/font/google";
 import SmoothScroll from "@/components/SmoothScroll";
 import "./globals.css";
 
@@ -18,6 +18,19 @@ const cormorant = Cormorant({
   subsets: ["latin"],
   style: ["normal", "italic"],
   variable: "--font-cormorant",
+});
+
+// Josefin Sans, for the hero wordmark only — Marcin's call. It is a geometric
+// sans with a small x-height and long ascenders, which is the opposite of what
+// the rest of the page is set in, and that is the point: the logo stops being
+// "the headline font, bigger" and becomes its own mark. Everything else stays
+// on Cormorant (editorial) and Work Sans (body).
+//
+// Its variable font carries a wght axis of 100–700, so unlike Cormorant it can
+// actually hold the 200 that was asked for earlier.
+const josefin = Josefin_Sans({
+  subsets: ["latin"],
+  variable: "--font-josefin",
 });
 
 const workSans = Work_Sans({
@@ -63,7 +76,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`scroll-smooth ${cormorant.variable} ${workSans.variable}`}
+      className={`scroll-smooth ${cormorant.variable} ${josefin.variable} ${workSans.variable}`}
     >
       <body>
         <SmoothScroll />
