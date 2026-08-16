@@ -38,6 +38,19 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Every control gets the hand. Anchors already had it from the UA stylesheet;
+   buttons did not — their UA cursor is `default`, and the page's own
+   `body { cursor: default }` above meant nothing was going to correct that.
+   The two in-page nav items and the hero CTA are buttons rather than anchors
+   (they scroll through Lenis), so without this the page had controls that
+   behaved like links and pointed like text. :disabled is excluded because a
+   dead control should not invite the click. */
+a[href],
+[role="button"],
+button:not(:disabled) {
+  cursor: pointer;
+}
+
 ::selection {
   background: var(--color-linen);
 }
