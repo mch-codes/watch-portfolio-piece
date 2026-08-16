@@ -26,15 +26,19 @@
  * is structural too: the gallery runs full-bleed to the true viewport edge,
  * this section contracts hard into an inset text block under a hairline.
  *
- * Palette stays on `paper`. A tinted band (linen) was measured and rejected:
- * the page's single micro-label token is `text-ash`, and ash on linen is
- * 3.97:1 — the eyebrow and the signature would fail AA at 10.88px. On paper
- * they hold 5.93:1. Magazines change gear by changing the type block, not by
- * tinting the sheet.
+ * The section is a linen band, at Marcin's direction — one of two, with Follow,
+ * so the six sections read as alternating grounds rather than one white sheet.
+ *
+ * The earlier note here rejected linen on contrast grounds and it was right
+ * about the numbers: the page's micro-label token is `text-ash`, and ash on
+ * linen is 3.97:1, which fails AA at 10.88px. The fix is the label, not the
+ * ground — the eyebrow and the signature run `text-ink/70` here (5.20:1), and
+ * the accent rule over the pull quote becomes oxblood, because the accent
+ * itself measures 2.51:1 on linen and fails even 1.4.11's 3:1 for a rule.
  */
 export default function Story() {
   return (
-    <section id="story" className="bg-paper pb-[14vh] pt-[8vh] lg:pb-[18vh] lg:pt-[10vh]">
+    <section id="story" className="bg-linen pb-[14vh] pt-[8vh] lg:pb-[18vh] lg:pt-[10vh]">
       {/* Same padded container as Hero and Finds, so the three read as one
           page even though this one holds no image. */}
       <div className="mx-auto w-full max-w-[100rem] px-6 sm:px-8 lg:px-12">
@@ -45,7 +49,7 @@ export default function Story() {
             a page where everything above it was a photograph. */}
         <header className="reveal border-t border-ink/15 pt-8 lg:grid lg:grid-cols-12 lg:gap-x-8 lg:pt-12">
           <div className="lg:col-span-7">
-            <p className="text-[0.68rem] uppercase tracking-[0.26em] text-ash">
+            <p className="text-[0.68rem] uppercase tracking-[0.26em] text-ink/70">
               Quién firma
             </p>
             {/* h2, following Finds' h2 — same level, no skipped rank. Smaller
@@ -123,11 +127,10 @@ export default function Story() {
           </div>
 
           {/* Pull quote. Serif italic, roughly double the body size, set on a
-              short accent rule — the accent is #e8501f on paper at 3.75:1, which
-              clears WCAG 1.4.11's 3:1 for a non-text boundary. It is the
-              section's only coloured mark — deliberately the only one, because
-              3.75:1 is a pass for a rule and a fail for any 18px word, so the
-              accent lives where it carries no text and nowhere else.
+              short oxblood rule. It was the accent until this section became a
+              linen band: #e8501f on linen is 2.51:1, which fails 1.4.11's 3:1
+              even for a non-text boundary, where oxblood holds 7.98:1. It is
+              still the section's only coloured mark.
 
               Columns 1-7: the same track the h2 occupies, so the quote is
               flush with the headline and the page margin while the body sits
@@ -151,7 +154,7 @@ export default function Story() {
               line at 768 and 3 at 320 — forcing the break there would leave a
               two-word line — so `text-pretty` handles orphans instead. */}
           <blockquote className="reveal mt-[9vh] lg:col-span-7 lg:col-start-1 lg:mt-[12vh]">
-            <span aria-hidden="true" className="block h-px w-12 bg-brass" />
+            <span aria-hidden="true" className="block h-px w-12 bg-oxblood" />
             {/* 2rem floor, not the 1.5rem this started at. 2.7vw only clears
                 the floor above an 889px viewport, so from 320 to 889 the quote
                 was pinned at 24px against a fixed 18px body — 1.33x, under the
@@ -185,13 +188,13 @@ export default function Story() {
             <p className="mt-8">
               En redes o en revista, todo sale bajo la misma firma:{" "}
               {/* The wordmark set in ink, not with the hero's accent "1". That
-                  glyph is #e8501f on paper at 3.75:1 — which clears AA in the
-                  hero because the h1 is 88px (large text, 3:1) and fails it
-                  here at 18px (body text, 4.5:1). Recolouring just this "1" to
-                  oxblood would pass at 11.93:1 and give the same wordmark two
-                  different accent colours on one page, so the accent drops out
-                  instead: the accent rule over the pull quote is already this
-                  section's one coloured mark, and it carries no text.
+                  glyph is #e8501f, which on this linen ground measures
+                  2.51:1 — it fails 18px body text (4.5:1) and would fail even
+                  as a rule here. Recolouring just this "1" to oxblood would
+                  pass at 7.98:1 and give the same wordmark two different accent
+                  colours on one page, so the accent drops out instead: the
+                  oxblood rule over the pull quote is already this section's one
+                  coloured mark, and it carries no text.
                   `whitespace-nowrap` keeps the handle off a line break. */}
               <span className="whitespace-nowrap">almenos1minuto</span>.
             </p>
@@ -200,7 +203,7 @@ export default function Story() {
                 gallery captions use, echoing the hero masthead's two standing
                 facts. It closes the section the way the page opened, and adds
                 no claim of its own. */}
-            <p className="mt-10 border-t border-ink/15 pt-4 text-[0.68rem] uppercase tracking-[0.26em] text-ash">
+            <p className="mt-10 border-t border-ink/15 pt-4 text-[0.68rem] uppercase tracking-[0.26em] text-ink/70">
               Relojería vintage · Madrid
             </p>
           </div>

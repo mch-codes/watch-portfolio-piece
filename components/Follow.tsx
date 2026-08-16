@@ -29,10 +29,10 @@ const CHANNELS = [
 
 export default function Follow() {
   return (
-    <section id="follow" className="bg-paper py-[14vh] lg:py-[18vh]">
+    <section id="follow" className="bg-linen py-[14vh] lg:py-[18vh]">
       <div className="mx-auto w-full max-w-[100rem] px-6 sm:px-8 lg:px-12">
         <header className="reveal max-w-[52rem]">
-          <p className="text-[0.68rem] uppercase tracking-[0.26em] text-ash">
+          <p className="text-[0.68rem] uppercase tracking-[0.26em] text-ink/70">
             Sígueme
           </p>
           <h2 className="mt-6 font-serif text-[clamp(1.75rem,4.4vw,3.75rem)] font-medium leading-[1.05] tracking-[-0.02em] text-ink">
@@ -62,7 +62,7 @@ export default function Follow() {
                 {/* The handle is the same on all three, so it is set once per
                     row as a quiet label rather than repeated at display size —
                     it confirms the account, it isn't the headline. */}
-                <span className="flex items-baseline gap-3 text-[0.68rem] uppercase tracking-[0.26em] text-ash transition-colors group-hover:text-oxblood">
+                <span className="flex items-baseline gap-3 text-[0.68rem] uppercase tracking-[0.26em] text-ink/70 transition-colors group-hover:text-oxblood">
                   <span className="hidden sm:inline">@almenos1minuto</span>
                   <span
                     aria-hidden="true"
